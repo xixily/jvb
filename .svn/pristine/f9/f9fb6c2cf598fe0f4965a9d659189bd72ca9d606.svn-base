@@ -1,0 +1,26 @@
+package jvb.util.json;
+
+import java.util.List;
+import java.util.Map;
+
+import net.sf.json.JSONObject;
+
+
+public class Test33 {
+	public static void main(String[] args) {
+		String str=AreaMap.getString();
+		System.out.println(str);
+		JSONObject obj=JSONObject.fromObject(str);
+		System.out.println(obj);
+	}
+	public static Map<String,Object> parseJSON2Map(String jsonStr){
+		
+		
+		return null;
+	}
+	public static List<Map<String,Object>> parseJSON2List(String jsonStr){
+		
+		return null;
+	}
+	
+}

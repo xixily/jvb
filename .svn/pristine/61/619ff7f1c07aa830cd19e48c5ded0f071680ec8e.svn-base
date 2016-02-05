@@ -1,0 +1,7 @@
+url=jdbc\:mysql\://127.0.0.1\:3306/jvb_pinche
+driverClassName=com.mysql.jdbc.Driver
+username=root
+password=
+maxActive=20
+maxIdle=10
+maxWait=5

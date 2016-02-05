@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<package name="p1" namespace="/ex01" extends="struts-default">
+	<!-- 原本要由struts2创建的RegAction对象 -->
+	<!-- 	<action name="reg" class="com.action.RegAction" method="reg"> -->
+	<!-- 现在通过一个包(struts2-spring-plugin-2.2.1.1.jar)辅助由spring来创建 -->
+		<action name="reg" class="reg" method="reg">
+			<result>/jsp/success.jsp</result>
+			<result name="input">/jsp/reg.jsp</result>
+		</action>
+	</package>
+</struts>

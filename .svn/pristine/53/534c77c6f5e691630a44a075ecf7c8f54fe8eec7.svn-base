@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="p1" namespace="/interface" extends="struts-default">
+		<action name="user" class="jvb.pinche.action.UserAction" method="login">
+			<result>/index.jsp</result>
+			<result name="input">/login.jsp</result>
+		</action>
+	</package>
+	<global-results>  
+            <!-- 当返回login视图名时，转入/login.jsp页面 -->  
+            <result name="login">/login.jsp</result>  
+        </global-results>  
+</struts>
