@@ -38,18 +38,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="container">
 		<div class="header">
 			<div class="logo">
-				<a href="index.html"> <img src="images/logo1.png" alt=""/> </a>
+				<a href="index.jsp"> <img src="images/logo1.png" alt=""/> </a>
 			</div>
 			<span class="menu"> <img src="images/icon.png" alt=""/></span>
 			<div class="clear"> </div>
 			<div class="navg">
 				<ul class="res">
-					<li><a href="index.html">主页</a></li>
-					<li><a href="shortDistance.html">短程拼车</a></li>
-					<li><a href="longDistance.html">长途拼车</a></li>
-					<li><a href="releaseMessages.html">发布拼车信息</a></li>
-					<li><a href="register.html">注册</a></li>
-					<li><a class="active" href="contact.html">联系我们</a></li>
+					<li><a href="index.jsp">主页</a></li>
+					<li><a href="shortDistance.jsp">短程拼车</a></li>
+					<li><a href="longDistance.jsp">长途拼车</a></li>
+					<li><a href="releaseMessages.jsp">发布拼车信息</a></li>
+					<li><a href="register.jsp">注册</a></li>
+					<li><a class="active" href="contact.jsp">联系我们</a></li>
 				</ul>
 				 <script>
 			                                                      $( "span.menu").click(function() {
@@ -109,12 +109,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="footer-main">
 			<div class="footer-navg">
 				<ul>
-					<li><a href="index.html">主页</a></li>
-					<li><a href="shortDistance.html">短程拼车</a></li>
-					<li><a href="longDistance.html">长途拼车</a></li>
-					<li><a href="releaseMessages.html">发布拼车信息</a></li>
-					<li><a href="register.html">注册</a></li>
-					<li><a class="active" href="contact.html">联系我们</a></li>
+					<li><a href="index.jsp">主页</a></li>
+					<li><a href="shortDistance.jsp">短程拼车</a></li>
+					<li><a href="longDistance.jsp">长途拼车</a></li>
+					<li><a href="releaseMessages.jsp">发布拼车信息</a></li>
+					<li><a href="register.jsp">注册</a></li>
+					<li><a class="active" href="contact.jsp">联系我们</a></li>
 				</ul>
 			</div>
 			<div class="footer-top">

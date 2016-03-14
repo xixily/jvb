@@ -25,5 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     成功页！<br>
+    ${user.nickName},welcome to our jsp!
   </body>
 </html>

@@ -68,24 +68,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="container">
         <div class="header">
             <div class="logo">
-                <a href="index.html"> <img src="images/logo.png" alt=""/> </a>
+                <a href="index.jsp"> <img src="images/logo.png" alt=""/> </a>
             </div>
             <span class="menu"> <img src="images/icon.png" alt=""/></span>
 
             <div class="clear"></div>
             <div class="navg">
                 <ul class="res">
-                    <li><a href="index.html">主页</a></li>
-                    <li><a class="active" href="shortDistance.html">短程拼车</a></li>
-                    <li><a href="longDistance.html">长途拼车</a></li>
-                    <li><a href="releaseMessages.html">发布拼车信息</a></li>
-                    <!--<li><a href="about.html">关于我们</a></li>-->
-                    <!--<li><a href="projects.html">项目</a></li>-->
-                    <!--<li><a href="blog.html">博客</a></li>-->
-                    <!--<li><a href="events.html">事件</a></li>-->
-                    <!--<li><a href="gallery.html">画廊</a></li>-->
-                    <li><a href="register.html">注册</a></li>
-                    <li><a href="contact.html">联系我们</a></li>
+                    <li><a href="index.jsp">主页</a></li>
+                    <li><a class="active" href="shortDistance.jsp">短程拼车</a></li>
+                    <li><a href="longDistance.jsp">长途拼车</a></li>
+                    <li><a href="releaseMessages.jsp">发布拼车信息</a></li>
+                    <!--<li><a href="about.jsp">关于我们</a></li>-->
+                    <!--<li><a href="projects.jsp">项目</a></li>-->
+                    <!--<li><a href="blog.jsp">博客</a></li>-->
+                    <!--<li><a href="events.jsp">事件</a></li>-->
+                    <!--<li><a href="gallery.jsp">画廊</a></li>-->
+                    <li><a href="register.jsp">注册</a></li>
+                    <li><a href="contact.jsp">联系我们</a></li>
                 </ul>
                 <script>
                     $("span.menu").click(function () {
@@ -317,17 +317,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="footer-main">
             <div class="footer-navg">
                 <ul>
-                    <li><a href="index.html">主页</a></li>
-                    <li><a class="active" href="shortDistance.html">短程拼车</a></li>
-                    <li><a href="longDistance.html">长途拼车</a></li>
-                    <li><a href="releaseMessages.html">发布拼车信息</a></li>
-                    <!--<li><a href="about.html">关于我们</a></li>-->
-                    <!--<li><a href="projects.html">项目</a></li>-->
-                    <!--<li><a href="blog.html">博客</a></li>-->
-                    <!--<li><a href="events.html">事件</a></li>-->
-                    <!--<li><a href="gallery.html">画廊</a></li>-->
-                    <li><a href="register.html">注册</a></li>
-                    <li><a href="contact.html">联系我们</a></li>
+                    <li><a href="index.jsp">主页</a></li>
+                    <li><a class="active" href="shortDistance.jsp">短程拼车</a></li>
+                    <li><a href="longDistance.jsp">长途拼车</a></li>
+                    <li><a href="releaseMessages.jsp">发布拼车信息</a></li>
+                    <!--<li><a href="about.jsp">关于我们</a></li>-->
+                    <!--<li><a href="projects.jsp">项目</a></li>-->
+                    <!--<li><a href="blog.jsp">博客</a></li>-->
+                    <!--<li><a href="events.jsp">事件</a></li>-->
+                    <!--<li><a href="gallery.jsp">画廊</a></li>-->
+                    <li><a href="register.jsp">注册</a></li>
+                    <li><a href="contact.jsp">联系我们</a></li>
                 </ul>
             </div>
             <div class="footer-bottom">
