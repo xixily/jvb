@@ -2,5 +2,80 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 通过spring创建Action对象,所以spring能控制整个action -->
+	<!-- 如果考虑到web项目的多客户端并发请求，则可以为此bean增加cope属性，取值prototype(默认：singleton)，代表多实例. -->
+	<bean id="user" class="jvb.pinche.action.UserAction" scope="prototype">
+	
+	</bean>
+	<bean id="messages" class="jvb.pinche.action.MessagesAction" scope="prototype">
+	
+	</bean>
+	<bean id="appliction" class="jvb.pinche.action.ApplicationAction" scope="prototype">
+	
+	</bean>
+	<bean id="download" class="jvb.pinche.action.DownloadFilesAction">
+	
+	</bean>
+	<bean id="upload" class="jvb.pinche.action.UploadFilesAction">
+	
+	</bean>
+	<bean id="export" class="jvb.pinche.action.ExportAction">
+	
+	</bean>
+	<bean id="userDao" class="jvb.pinche.dao.ApplicationDao" scope="prototype"></bean>
+	<bean id="messagesDao" class="jvb.pinche.dao.MessagesDao" scope="prototype"></bean>
+	<bean id="applictionDao" class="jvb.pinche.dao.ApplicationDao" scope="prototype"></bean>
+	
+	<!-- <bean id="reg" class="com.action.RegAction">
+		<property name="ud" ref="ud"></property>
+	</bean>	
+	<bean id="ud" class="com.dao.UserDao">
+		<property name="sf" ref="sessionFactory"/>
+	</bean> -->
+	
+	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		配置文件路径
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+		配置文件读取的hibernate类Configuration
+		<property name="configurationClass" value="org.hibernate.cfg.Configuration"/>
+	</bean> -->
+	
+	<!-- <bean id="udProxy" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>ud</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean> -->
+<!-- 	<bean id="odProxy" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>od</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean> -->
+	
+	<!-- <bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean> -->
 	
 </beans>

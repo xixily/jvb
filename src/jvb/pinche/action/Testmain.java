@@ -3,7 +3,7 @@ package jvb.pinche.action;
 
 import org.apache.log4j.Logger;
 
-import jvb.util.GenrateId;
+import jvb.util.GenrateNumber;
 
 public class Testmain {
 	
@@ -18,8 +18,8 @@ public class Testmain {
 //		System.out.println(lid);
 //		String sid=GenrateId.genrateLmsgId("U000000010");
 //		System.out.println(sid);
-		String randomCode=GenrateId.genrateRandomCode(1);
-		String randomCode2=GenrateId.genrateRandomCode(8,false);
+		String randomCode=GenrateNumber.genrateRandomCode(1);
+		String randomCode2=GenrateNumber.genrateRandomCode(8,false);
 		Logger logger=Logger.getLogger(Testmain.class);
 		logger.debug("debug信息\t randomCode:"+randomCode);
 		logger.error("错误信息\t randomCode2:"+randomCode2);

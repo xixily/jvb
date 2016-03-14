@@ -55,10 +55,10 @@ public class User {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	public String geteMail() {
+	public String getEMail() {
 		return eMail;
 	}
-	public void seteMail(String eMail) {
+	public void setEMail(String eMail) {
 		this.eMail = eMail;
 	}
 	public String getRealName() {
@@ -78,6 +78,14 @@ public class User {
 	}
 	public void setTelPhone(String telPhone) {
 		this.telPhone = telPhone;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userNum=" + userNum + ", userName=" + userName
+				+ ", userPassword=" + userPassword + ", nickName=" + nickName
+				+ ", eMail=" + eMail + ", realName=" + realName + ", userType="
+				+ userType + ", telPhone=" + telPhone + "]";
 	}
 	
 }

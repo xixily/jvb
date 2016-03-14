@@ -15,7 +15,7 @@
   <!-- 默认不配约定在WEB-INF下的applicationContext.xml -->
   <context-param>
   	<param-name>contextConfigLocation</param-name>
-  	<param-value>/WEB-INF/bean.xml</param-value>有多个配置文件加逗号
+  	<param-value>/WEB-INF/bean.xml</param-value>
   </context-param> 
   <listener>
   <!-- 用listener创建spring容器，相当于自己new出来得到的spring -->

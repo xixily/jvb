@@ -10,11 +10,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
+
+
+
+import jvb.pinche.vo.User;
+
 public class BaseDaoM {
-	private Connection conn = JDBCUtil.getConn();
+	Logger logger=Logger.getLogger(this.getClass());
+	private Connection conn = null;
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
 
+	private void init(){
+		if(this.conn == null){
+			this.conn = JDBCUtil.getConn();
+		}
+	}
+	
 	/**
 	 * 查询符合条件的记录数
 	 * 
@@ -25,20 +39,29 @@ public class BaseDaoM {
 	 * @return 符合条件的记录数
 	 */
 	public long getCount(String sql, Object... args) {
-		try {
-			ps = conn.prepareStatement(sql);
-			for (int i = 0; i < args.length; i++) {
-				ps.setObject(i + 1, args[i]);
-			}
-			rs = ps.executeQuery();
-			if (rs.next()) {
-				return rs.getLong(1);//返回结果集条数
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.realse(conn, ps, rs);
+		this.init();
+		if(conn == null){
+				conn = JDBCUtil.getConn();
+				if((conn = JDBCUtil.getConn()) == null){
+					logger.error("getConn()失败！");
+					return 0L;
+				}
 		}
+			try {
+				ps = conn.prepareStatement(sql);
+				for (int i = 0; i < args.length; i++) {
+					ps.setObject(i + 1, args[i]);
+				}
+				rs = ps.executeQuery();
+				if (rs.next()) {
+					return rs.getLong(1);//返回结果集条数
+				}
+			} catch (SQLException e) {
+				logger.error("sql执行失败" + e);
+				e.printStackTrace();
+			} finally {
+//				JDBCUtil.realse(conn, ps, rs);
+			}
 		return 0L;
 	}
 
@@ -58,8 +81,17 @@ public class BaseDaoM {
 	 *            给sql语句中的？赋值的参数列表
 	 * @return 要查询的类的集合，无结果时返回null
 	 */
+	@SuppressWarnings("unchecked")
 	public <T> List<T> executeQuery(String sql, Class<T> clazz, Object... args) {
-		List list = new ArrayList();
+		this.init();
+		List<Object> list = new ArrayList<Object>();
+		if(conn == null){
+			conn = JDBCUtil.getConn();
+			if((conn = JDBCUtil.getConn()) == null){
+				logger.error("getConn()失败！");
+				return null;
+			}
+		}
 		try {
 			ps = conn.prepareStatement(sql);
 			for (int i = 0; i < args.length; i++) {
@@ -75,7 +107,7 @@ public class BaseDaoM {
 					Field f = fs[i];
 					String colName = f.getName().substring(0, 1).toUpperCase()
 							+ f.getName().substring(1);
-					System.out.println(colName);
+//					System.out.println(colName);
 					colNames[i] = colName;
 					String rType = f.getType().getSimpleName();
 					rTypes[i] = rType;
@@ -105,12 +137,15 @@ public class BaseDaoM {
 				}
 				list.add(object);
 			}
-			return list;
+			logger.info("executeQuery()成功！");
+			return (List<T>) list;
 		} catch (Exception e) {
+			logger.error("sql执行失败" + e);
 			e.printStackTrace();
 		} finally {
-			JDBCUtil.realse(conn, ps, rs);
+//			JDBCUtil.realse(conn, ps, rs);
 		}
+		logger.error("executeQuery()失败！");
 		return null;
 	}
 
@@ -127,9 +162,17 @@ public class BaseDaoM {
 	 * @return 操作结果，1 成功，0 失败
 	 */
 	public int saveEntity(String sql, Object object, int... args) {
+		this.init();
+		if(conn == null){
+			conn = JDBCUtil.getConn();
+			if((conn = JDBCUtil.getConn()) == null){
+				logger.error("getConn()失败！");
+				return 0;
+			}
+		}
 		try {
 			ps = conn.prepareStatement(sql);
-			Class c = object.getClass();
+			Class<? extends Object> c = object.getClass();
 			Field[] fields = object.getClass().getDeclaredFields();
 			int temp = 1;// 正赋值的？的下标，最大下标为args的长度
 			int colIndex = 1;// SQL语句中的当前字段下标
@@ -150,12 +193,15 @@ public class BaseDaoM {
 				}
 				colIndex++;// 更新索引下标
 			}
+			logger.info("saveEntity()插入成功！");
 			return ps.executeUpdate();
 		} catch (Exception e) {
+			logger.error("sql执行失败" + e);
 			e.printStackTrace();
 		} finally {
-			JDBCUtil.realse(conn, ps, null);
+//			JDBCUtil.realse(conn, ps, null);
 		}
+		logger.error("saveEntity()插入失败！");
 		return 0;
 	}
 
@@ -169,18 +215,69 @@ public class BaseDaoM {
 	 * @return 操作结果，正数 成功，0 失败
 	 */
 	public int saveOrUpdate(String sql, Object... args) {
+		this.init();
+		if(conn == null){
+			conn = JDBCUtil.getConn();
+			if((conn = JDBCUtil.getConn()) == null){
+				logger.error("getConn()失败！");
+				return 0;
+			}
+		}
 		try {
 			ps = conn.prepareStatement(sql);
 			for (int j = 0; j < args.length; j++) {
 				ps.setObject(j + 1, args[j]);
 			}
+			logger.info("saveOrUpdate()成功！");
 			return ps.executeUpdate();
 		} catch (Exception e) {
+			logger.error("sql执行失败" + e);
 			e.printStackTrace();
 		} finally {
-			JDBCUtil.realse(conn, ps, null);
+//			JDBCUtil.realse(conn, ps, null);
 		}
+		logger.error("saveOrUpdate()失败！");
 		return 0;
+	}
+	/**
+	 * 释放连接资源
+	 * @param conn 
+	 * 			数据库连接池
+	 * @param ps
+	 * 			PreparedStatement
+	 * @param rs
+	 * 			ResultSet
+	 * 
+	 */
+	public void release(){
+		JDBCUtil.realse(conn, ps, rs);
+	}
+
+	public static void main(String[] args) {
+		BaseDaoM bd = new BaseDaoM();
+		String sql = "select * from tbl_user";
+		List<User> users = new ArrayList<User>();
+		users = bd.executeQuery(sql, User.class);
+		User u = new User();
+		u.setUserNum("U000000017");
+		u.setUserName("yzq");
+		u.setUserPassword("123abc");
+		u.setNickName("zhongqing");
+		u.setEMail("bilybily@qq.com");
+		u.setRealName("yzq");
+		u.setUserType("乘客");
+		u.setTelPhone("123124251");
+		String sql2 = "insert into tbl_user values(?,?,?,?,?,?,?,?)";
+		bd.saveEntity(sql2, u);
+//		User u1 = users.get(0);
+//		System.out.println(u1);
+//		User u2 = users.get(1);
+//		System.out.println(u2);
+//		User u3 = users.get(2);
+//		System.out.println(u3);
+//		User u4 = users.get(3);
+//		System.out.println(u4);
+		System.out.println(users.size());
 	}
 }
 
