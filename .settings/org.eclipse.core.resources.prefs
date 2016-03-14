@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebRoot/contact.jsp=UTF-8
 encoding//WebRoot/index.jsp=UTF-8
+encoding//WebRoot/js/baiduTools.js=GBK
+encoding//WebRoot/js/handler.js=gbk
 encoding//src/jvb/util/test/MailUtil1.java=UTF-8
 encoding/WebRoot=UTF-8

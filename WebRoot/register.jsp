@@ -1,7 +1,9 @@
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/-->
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 
 <!DOCTYPE html>
 <html>
@@ -43,17 +45,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/-->
 			<div class="clear"> </div>
 			<div class="navg">
 				<ul class="res">
-					<li><a href="index.html">主页</a></li>
-					<li><a href="shortDistance.html">短程拼车</a></li>
-					<li><a href="longDistance.html">长途拼车</a></li>
-					<li><a href="releaseMessages.html">发布拼车信息</a></li>
-					<!--<li><a href="about.html">关于我们</a></li>-->
-					<!--<li><a href="projects.html">项目</a></li>-->
-					<!--<li><a href="blog.html">博客</a></li>-->
-					<!--<li><a href="events.html">事件</a></li>-->
-					<!--<li><a href="gallery.html">画廊</a></li>-->
-					<li><a  class="active" href="register.html">注册</a></li>
-					<li><a href="contact.html">联系我们</a></li>
+					<li><a href="index.html">ä¸»é¡µ</a></li>
+					<li><a href="shortDistance.html">ç­ç¨æ¼è½¦</a></li>
+					<li><a href="longDistance.html">é¿éæ¼è½¦</a></li>
+					<li><a href="releaseMessages.html">åå¸æ¼è½¦ä¿¡æ¯</a></li>
+					<!--<li><a href="about.html">å³äºæä»¬</a></li>-->
+					<!--<li><a href="projects.html">é¡¹ç®</a></li>-->
+					<!--<li><a href="blog.html">åå®¢</a></li>-->
+					<!--<li><a href="events.html">äºä»¶</a></li>-->
+					<!--<li><a href="gallery.html">ç»å»</a></li>-->
+					<li><a  class="active" href="register.html">æ³¨å</a></li>
+					<li><a href="contact.html">èç³»æä»¬</a></li>
 				</ul>
 				 <script>
 					 $(document).ready(function(){
