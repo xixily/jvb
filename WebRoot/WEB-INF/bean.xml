@@ -6,7 +6,9 @@
 	<!-- 通过spring创建Action对象,所以spring能控制整个action -->
 	<!-- 如果考虑到web项目的多客户端并发请求，则可以为此bean增加cope属性，取值prototype(默认：singleton)，代表多实例. -->
 	<bean id="user" class="jvb.pinche.action.UserAction" scope="prototype">
-	
+		<property name="user" ref="userVo"></property>
+		<property name="userDao" ref="userDao"></property>
+		<property name="validateCode" value="test"/>
 	</bean>
 	<bean id="messages" class="jvb.pinche.action.MessagesAction" scope="prototype">
 	
@@ -26,7 +28,9 @@
 	<bean id="userDao" class="jvb.pinche.dao.ApplicationDao" scope="prototype"></bean>
 	<bean id="messagesDao" class="jvb.pinche.dao.MessagesDao" scope="prototype"></bean>
 	<bean id="applictionDao" class="jvb.pinche.dao.ApplicationDao" scope="prototype"></bean>
-	
+	<bean id="userVo" class="jvb.pinche.vo.User" scope="prototype">
+		<property name="userType" value="乘客"/>
+	</bean>
 	<!-- <bean id="reg" class="com.action.RegAction">
 		<property name="ud" ref="ud"></property>
 	</bean>	

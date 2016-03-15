@@ -48,10 +48,8 @@ public class UserAction extends BaseAction{
 		System.out.println(user);
 		String name = user.getUserName();
 		String password=user.getUserPassword();
-		session.get(SessionConf.VALIDATE_CODE);
+		session.put(SessionConf.VALIDATE_CODE, "test");
 		if(request.get(SessionConf.VALIDATE_CODE).equals(session.get(SessionConf.VALIDATE_CODE))){
-			
-		
 		if("".equals(name)||name==null||"".equals(password)||password==null){
 			request.put("msg", "用户名或密码为空!!!");
 			return ActionSupport.ERROR;
@@ -127,6 +125,7 @@ public class UserAction extends BaseAction{
 		TelphoneUtil tel = new TelphoneUtil(phoneNumber, validateCode);
 		tel.start();
 	}
+	
 //	//修改用户信息
 //	public String update(){
 //		userDao.update(user);

@@ -13,8 +13,12 @@
 			<result name="input">/jsp/reg.jsp</result>
 		</action>
 	</package>
-	<package name="user" namespace="/jsp" extends="struts-default">
+	<package name="user" namespace="/interface" extends="struts-default">
 		<action name="regiest" class="jvb.pinche.action.UserAction" method="regiest">
+			<result name="success">/jsp/success.jsp</result>
+			<result name="error">/jsp/error.jsp</result>
+		</action>
+		<action name="login" class="jvb.pinche.action.UserAction" method="regiest">
 			<result name="success">/jsp/success.jsp</result>
 			<result name="error">/jsp/error.jsp</result>
 		</action>

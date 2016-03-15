@@ -79,14 +79,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li><a class="active" href="shortDistance.jsp">短程拼车</a></li>
                     <li><a href="longDistance.jsp">长途拼车</a></li>
                     <li><a href="releaseMessages.jsp">发布拼车信息</a></li>
-                    <!--<li><a href="about.jsp">关于我们</a></li>-->
-                    <!--<li><a href="projects.jsp">项目</a></li>-->
-                    <!--<li><a href="blog.jsp">博客</a></li>-->
-                    <!--<li><a href="events.jsp">事件</a></li>-->
-                    <!--<li><a href="gallery.jsp">画廊</a></li>-->
                     <li><a href="register.jsp">注册</a></li>
+                    <li><a href="login.jsp">登录</a></li>
                     <li><a href="contact.jsp">联系我们</a></li>
                 </ul>
+                	<div style="text-align: right;margin-top: 6px;">
+					<span>游客，欢迎您</span>
+					</div>
                 <script>
                     $("span.menu").click(function () {
                         $("ul.res").slideToggle("slow", function () {
@@ -321,12 +320,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li><a class="active" href="shortDistance.jsp">短程拼车</a></li>
                     <li><a href="longDistance.jsp">长途拼车</a></li>
                     <li><a href="releaseMessages.jsp">发布拼车信息</a></li>
-                    <!--<li><a href="about.jsp">关于我们</a></li>-->
-                    <!--<li><a href="projects.jsp">项目</a></li>-->
-                    <!--<li><a href="blog.jsp">博客</a></li>-->
-                    <!--<li><a href="events.jsp">事件</a></li>-->
-                    <!--<li><a href="gallery.jsp">画廊</a></li>-->
                     <li><a href="register.jsp">注册</a></li>
+                    <li><a href="login.jsp">登录</a></li>
                     <li><a href="contact.jsp">联系我们</a></li>
                 </ul>
             </div>

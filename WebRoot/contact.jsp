@@ -51,6 +51,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a href="register.jsp">注册</a></li>
 					<li><a class="active" href="contact.jsp">联系我们</a></li>
 				</ul>
+					<div style="text-align: right;margin-top: 6px;">
+					<span>游客，欢迎您</span>
+				</div>
 				 <script>
 			                                                      $( "span.menu").click(function() {
 			                                                                                        $(  "ul.res" ).slideToggle("slow", function() {
