@@ -11,7 +11,7 @@ import jvb.pinche.vo.User;
 
 public interface ServiceDao {
 	public User getUserByid(String userId);
-	public User getUserByUserName(String username);
+	public List<User> getUserByUserName(String username);
 	public boolean addUser(User user);
 	
 	public Address getAddressById(String addressId);

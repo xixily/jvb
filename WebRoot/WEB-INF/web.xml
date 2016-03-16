@@ -21,4 +21,7 @@
   <!-- 用listener创建spring容器，相当于自己new出来得到的spring -->
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <session-config> 
+   <session-timeout>30</session-timeout> 
+</session-config> 
 </web-app>

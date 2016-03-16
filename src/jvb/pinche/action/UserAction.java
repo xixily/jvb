@@ -13,13 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class UserAction extends BaseAction{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1231344131313L;
-//	HttpServletRequest request=ServletActionContext.getRequest();
-//	HttpServletResponse response=ServletActionContext.getResponse();
-//	HttpSession session=request.getSession();
 	private User user;
 	private ServiceDaoImp userDao;
 	private String validateCode;
@@ -38,7 +32,13 @@ public class UserAction extends BaseAction{
 	}
 	
 	
-	// 登陆功能
+	
+	public String getValidateCode() {
+		return validateCode;
+	}
+	public void setValidateCode(String validateCode) {
+		this.validateCode = validateCode;
+	}
 	/**
 	 * 登录功能
 	 * @author dengxf
@@ -51,15 +51,17 @@ public class UserAction extends BaseAction{
 		session.put(SessionConf.VALIDATE_CODE, "test");
 		if(request.get(SessionConf.VALIDATE_CODE).equals(session.get(SessionConf.VALIDATE_CODE))){
 		if("".equals(name)||name==null||"".equals(password)||password==null){
+			request.put("success", "false");
 			request.put("msg", "用户名或密码为空!!!");
 			return ActionSupport.ERROR;
 		}
-		User u1 = userDao.getUserByUserName(name);
+		User u1 = userDao.getUserByUserName(name).get(0);
 		if (u1 == null) {
+			request.put("success", "false");
 			request.put("msg","该用户不存在,请重新登录");
-			
 			return  ActionSupport.ERROR;
 		} else if (!u1.getUserPassword().equals(user.getUserPassword())) {
+			request.put("success", "false");
 			request.put("msg","密码错误，请重新登录");
 			logger.error("密码错误，请重新登录");
 			return  ActionSupport.ERROR;
@@ -69,8 +71,9 @@ public class UserAction extends BaseAction{
 //			return "failure";
 //		} 
 		else {
-//			session.setAttribute("user", u1);
+			request.put("success", "true");
 			session.put("user", u1);
+			user = u1;
 			return ActionSupport.SUCCESS;
 		}
 		}else{

@@ -8,7 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Charity A Charity  category Flat bootstrap Responsive  Website Template| Contact :: w3layouts</title>
+<base href="<%=basePath%>">
+<title>注册聚玩吧拼车</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <!--web-fonts-->
@@ -23,14 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- start-smoth-scrolling -->
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
-	<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
-	</script>
+<script type="text/javascript" src="js/register.js"></script>
 <!-- //end-smoth-scrolling -->
 </head>
 <body>
@@ -51,100 +45,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a href="longDistance.jsp">长途拼车</a></li>
 					<li><a href="releaseMessages.jsp">发布拼车信息</a></li>
 					<li><a class="active" href="register.jsp">注册</a></li>
+					<li><a href="login.jsp">登录</a></li>
 					<li><a href="contact.jsp">联系我们</a></li>
 				</ul>
 				</ul>
 				<div style="text-align: right;margin-top: 6px;">
-					<span>游客，欢迎您</span>
+					<span>${user.nickName}，欢迎您</span>
 					</div>
-				 <script>
-					 $(document).ready(function(){
-						 var sub = false;
-						 $("button").click(function(){
-							 if(sub){
-								 $.ajax({
-									 type: "GET",
-									 url: sendUrl,
-									 async: true,
-									 data: command,
-									 timeout: 30000,
-									 dataType: "jsonp",
-									 jsonp: "callback",
-									 success: function (data, status) {
-										 if (typeof callback == "function") {
-											 callback(data);
-										 }
-										 if (data && !data.Succeed && data.SessionTimeout == 1) {
-											 alert("会话已经失效，请您重新登录");
-											 window.location.href = "./";
-											 return;
-										 }
-									 },
-									 error: function (xhr, status, error) {
-										 if (errorCallback && (typeof errorCallback == "function")) {
-											 errorCallback(xhr, status, error);
-										 } else {
-											 if (xhr.statusText != 'success') {
-												 $().toastmessage('showErrorToast', '请求超时或网络问题,' + status || error);
-											 }
-										 }
-									 }
-								 });
-							 }else{
-								 alert("请检查您输入的信息！");
-								return;
-							 }
-
-//							 if(/^[a-zA-Z]\d+$/.test($("#user").val())){
-//								 $(".userMessage").text("y").css("color","green");
-//							 }else{
-//								 console.log("请正确输入的用户名格式：字母+数字（a123）");
-//							 }
-//							 if($("#password").val() === $("#checkedPassword").val()){
-//								 $(".passwordMessage").text("密码正确").css("color","green");
-//							 }else{
-//								 $(".passwordMessage").text("两次输入密码不同，请重新输入！").css("color","red");
-//							 }
-						 })
-						 $("#user").blur(function(){
-							 console.log($("#user").val());
-							 $(".userMessage").text("");
-							 if(/^[a-zA-Z]\d+$/.test($("#user").val())){
-								 $.ajax()
-								 $(".userMessage").text("用户名可用！").css("color","green");
-							 }else{
-								 $(".userMessage").text("请正确输入的用户名格式：字母+数字（a123）").css("color","red");
-							 }
-						 })
-						 $("#checkedPassword").blur(function(){
-									 $(".passwordMessage").text();
-									 if($("#password").val() === $("#checkedPassword").val()){
-										 $(".passwordMessage").text("密码正确").css("color","green");
-									 }else{
-										 $(".passwordMessage").text("两次输入密码不一致，请重新输入！").css("color","red");
-									 }
-								 }
-						 )
-						 $("#exampleInputEmail1").blur(function(){
-							 if($(this).val()===''){
-								 $('.mailMessage').text("");
-								 return;
-							 }
-							 if( /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(this).val())){
-								 $('.mailMessage').text("邮箱正确").css("color","green");
-							 }else{
-								 $('.mailMessage').text("请检查您的邮箱格式!").css("color","red");
-							 }
-						 })
-
-
-					 $( "span.menu").click(function() {
-						 $(  "ul.res" ).slideToggle("slow", function() {
-						 // Animation complete.
-							 });
-					 });
-					 })
-				 </script>
 			</div>
 		<div class="clearfix"> </div>
 		</div>
@@ -189,37 +96,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<button type="submit" class="btn btn-default">注册</button>
 				</form>
 				</div>
-
-
-			  <!--<h3>输入你的信息：</h3>-->
-			  <!--<div class="col-md-4 get-left">-->
-			  	 <!--<p>用户名：</p>-->
-			  	 <!--<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>-->
-			  	 <!--<p>密码：</p>-->
-			  	 <!--<input type="password" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>-->
-			  	 <!--<p>再次输入密码：</p>-->
-			  	 <!--<input type="password" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>-->
-			  	 <!--<p>邮箱：</p>-->
-			  	 <!--<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>-->
-			  	 <!--<input type="submit" value="Send">-->
-			  <!--</div>-->
-			  <!--<div class="col-md-6 get-right">-->
-			  	<!--<h4>Message</h4>-->
-			  	<!--<textarea   onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/> </textarea>-->
-			  	<!--<h3>Contact us</h3>-->
-					<!--<p>Address : Richard McClintock</p>-->
-					<!--<p>New Street : Letraset sheets</p>-->
-					<!--<p>ph : 0000-0000-000</p>	-->
-		 	  <!--</div>-->
-		 	<!--<div class="clearfix"> </div>	-->
 		</div>
 	</div>
 </div>
-<!--<div class="map">-->
-	<!--<div class="container">-->
-		 <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387144.007583421!2d-73.97800349999999!3d40.7056308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1415253431785"  frameborder="0" style="border:0"></iframe>-->
-	<!--</div>-->
-<!--</div>-->
+<div class="map">
+	<div class="container">
+	</div>
+</div>
 <!--get touch end here-->
 <!--footer start here-->
 <div class="footer">
@@ -231,12 +114,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a href="shortDistance.jsp">短程拼车</a></li>
 					<li><a href="longDistance.jsp">长途拼车</a></li>
 					<li><a href="releaseMessages.jsp">发布拼车信息</a></li>
-					<!--<li><a href="about.jsp">关于我们</a></li>-->
-					<!--<li><a href="projects.jsp">项目</a></li>-->
-					<!--<li><a href="blog.jsp">博客</a></li>-->
-					<!--<li><a href="events.jsp">事件</a></li>-->
-					<!--<li><a href="gallery.jsp">画廊</a></li>-->
 					<li><a class="active" href="register.jsp">注册</a></li>
+					<li><a href="login.jsp">登录</a></li>
 					<li><a href="contact.jsp">联系我们</a></li>
 				</ul>
 			</div>

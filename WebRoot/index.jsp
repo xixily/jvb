@@ -7,6 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 <head>
+<base href="<%=basePath%>">
 <title>聚玩吧拼车主页</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -48,12 +49,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a href="shortDistance.jsp">短程拼车</a></li>
 					<li><a href="longDistance.jsp">长途拼车</a></li>
 					<li><a href="releaseMessages.jsp">发布拼车信息</a></li>
+					<%
+						if(session.getAttribute("user")==null){
+					%>
 					<li><a href="register.jsp">注册</a></li>
 					<li><a href="login.jsp">登录</a></li>
+					<%} else{ %>
+					<li><a href="myInfomation.jsp">我的信息</a></li>
+					<% } %>
 					<li><a href="contact.jsp">联系我们</a></li>
 				</ul>
 					<div style="text-align: right;margin-top: 6px;">
-					<span>游客，欢迎您</span>
+					<span>${user.nickName}，欢迎您</span>
 					</div>
 				 <script>
 					 $( "span.menu").click(function() {
@@ -72,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="banner">
 	<div class="container">
 		<div class="banner-main">
-			<h1>欢迎来到聚玩吧拼车主页</h1>
+			<h1>${user.nickName},欢迎来到聚玩吧拼车主页</h1>
 			<p>聚玩吧拼车是一个提供大家回家、旅游、上班等拼车网站，由于该系统初次开发，可能在各个方面做得都不是很足，希望使用者能在使用过程中遇到了什么不合适的地方，务必联系799123897@qq.com，我们将尽力去完善我们的系统</p>
 		 <div class="bwn">
 			<a href="#"> 捐献我们>>> </a>
@@ -182,8 +189,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a href="shortDistance.jsp">短程拼车</a></li>
 					<li><a href="longDistance.jsp">长途拼车</a></li>
 					<li><a href="releaseMessages.jsp">发布拼车信息</a></li>
+					<%
+						if(session.getAttribute("user")==null){
+					%>
 					<li><a href="register.jsp">注册</a></li>
 					<li><a href="login.jsp">登录</a></li>
+					<%} else{ %>
+					<li><a href="myInfomation.jsp">我的信息</a></li>
+					<% } %>
 					<li><a  href="contact.jsp">联系我们</a></li>
 				</ul>
 			</div>

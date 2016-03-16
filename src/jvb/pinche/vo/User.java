@@ -8,7 +8,7 @@ public class User {
 	private String userName;
 	private String userPassword;
 	private String nickName;
-	private String eMail;
+	private String email;
 	private String realName;
 	private String userType;
 	private String telPhone;
@@ -18,14 +18,14 @@ public class User {
 	}
 	
 	public User(String userNum, String userName, String userPassword,
-			String nickName, String eMail, String realName, String userType,
+			String nickName, String email, String realName, String userType,
 			String telPhone) {
 		super();
 		this.userNum = userNum;
 		this.userName = userName;
 		this.userPassword = userPassword;
 		this.nickName = nickName;
-		this.eMail = eMail;
+		this.email = email;
 		this.realName = realName;
 		this.userType = userType;
 		this.telPhone = telPhone;
@@ -55,12 +55,15 @@ public class User {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	public String getEMail() {
-		return eMail;
+	
+	public String getEmail() {
+		return email;
 	}
-	public void setEMail(String eMail) {
-		this.eMail = eMail;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
 	public String getRealName() {
 		return realName;
 	}
@@ -84,7 +87,7 @@ public class User {
 	public String toString() {
 		return "User [userNum=" + userNum + ", userName=" + userName
 				+ ", userPassword=" + userPassword + ", nickName=" + nickName
-				+ ", eMail=" + eMail + ", realName=" + realName + ", userType="
+				+ ", eMail=" + email + ", realName=" + realName + ", userType="
 				+ userType + ", telPhone=" + telPhone + "]";
 	}
 	

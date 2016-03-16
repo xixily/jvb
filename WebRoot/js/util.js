@@ -1,46 +1,17 @@
 /**
  * Created by Administrator on 2016/3/2.
  */
-var url = "./action";
+var url = "./interface";
 
 $.ajaxSetup({
     cache: true
 });
 var session = {
-    logined: false,
-    currentPage: {},
-    customer: {},
-    addCustomerView: null,
-    customerView: null,
-    searchCustomerView: null,
-    loadingCustomerView: null,
-    notifyPage: false,
-    pageStatus: {},
-    cacheErrorType: {}
-};
-function init() {
-    //updateView();
-    //resize();
-    //
-    //$(window).resize(function () {
-    //    resize();
-    //});
-    //
-    //$("#login").live("click", function (e) {
-    //    _login();
-    //});
-    //$("#logoff").live("click", function (e) {
-    //    _logoff();
-    //});
-    //$(".jspScrollable").each(function () {
-    //    _initScroll($(this));
-    //});
-    //_initClickHandler();
-    //
-    //init2();
-    //
-    //checkLoginStatus();
-}
+	    sessionId:null,
+	    user:{},
+	    userType:null,
+	    currentPage:0
+	    };
 function sendAction(action, callback, method, hideLoading, async, timeout) {
     if (async !== false) {
         async = true;
@@ -86,7 +57,7 @@ function sendAction(action, callback, method, hideLoading, async, timeout) {
             }, async, timeout);
         }
     } else {
-        alert("»¹Î´µÇÂ½, ²»ÄÜ·¢ËÍÇëÇó");
+        alert("è¿˜æœªç™»é™†, ä¸èƒ½å‘é€è¯·æ±‚");
     }
 }
 function sendPostCommand(command, callback, errorCallback, async, timeout,url) {
@@ -106,7 +77,7 @@ function sendPostCommand(command, callback, errorCallback, async, timeout,url) {
                 callback(data);
             }
             if (data && !data.Succeed && data.SessionTimeout == 1) {
-                alert("»á»°ÒÑ¾­Ê§Ğ§£¬ÇëÄúÖØĞÂµÇÂ¼");
+                alert("ä¼šè¯å·²ç»å¤±æ•ˆï¼Œè¯·æ‚¨é‡æ–°ç™»å½•");
                 window.location.href = "./";
                 return;
             }
@@ -116,7 +87,7 @@ function sendPostCommand(command, callback, errorCallback, async, timeout,url) {
                 errorCallback(xhr, status, error);
             } else {
                 if (xhr.statusText != 'success') {
-                    $().toastmessage('showErrorToast', 'ÇëÇó³¬Ê±»òÍøÂçÎÊÌâ,' + status || error);
+                    $().toastmessage('showErrorToast', 'è¯·æ±‚è¶…æ—¶æˆ–ç½‘ç»œé—®é¢˜,' + status || error);
                 }
             }
         }
@@ -148,7 +119,7 @@ function sendCommand(sendUrl, command, callback, errorCallback, async, timeout) 
                 callback(data);
             }
             if (data && !data.Succeed && data.SessionTimeout == 1) {
-                alert("»á»°ÒÑ¾­Ê§Ğ§£¬ÇëÄúÖØĞÂµÇÂ¼");
+                alert("ï¿½á»°ï¿½Ñ¾ï¿½Ê§Ğ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼");
                 window.location.href = "./";
                 return;
             }
@@ -158,7 +129,7 @@ function sendCommand(sendUrl, command, callback, errorCallback, async, timeout) 
                 errorCallback(xhr, status, error);
             } else {
                 if (xhr.statusText != 'success') {
-                    $().toastmessage('showErrorToast', 'ÇëÇó³¬Ê±»òÍøÂçÎÊÌâ,' + status || error);
+                    $().toastmessage('showErrorToast', 'ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,' + status || error);
                 }
             }
         }

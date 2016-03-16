@@ -7,6 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 <head>
+<base href="<%=basePath%>">
 <title>聚玩吧-联系我们</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -48,11 +49,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a href="shortDistance.jsp">短程拼车</a></li>
 					<li><a href="longDistance.jsp">长途拼车</a></li>
 					<li><a href="releaseMessages.jsp">发布拼车信息</a></li>
+					<%
+						if(session.getAttribute("user")==null){
+					%>
 					<li><a href="register.jsp">注册</a></li>
+					<li><a href="login.jsp">登录</a></li>
+					<%} else{ %>
+					<li><a href="myInfomation.jsp">我的信息</a></li>
+					<% } %>
 					<li><a class="active" href="contact.jsp">联系我们</a></li>
 				</ul>
 					<div style="text-align: right;margin-top: 6px;">
-					<span>游客，欢迎您</span>
+					<span>${user.nickName}，欢迎您</span>
 				</div>
 				 <script>
 			                                                      $( "span.menu").click(function() {
@@ -116,7 +124,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li><a href="shortDistance.jsp">短程拼车</a></li>
 					<li><a href="longDistance.jsp">长途拼车</a></li>
 					<li><a href="releaseMessages.jsp">发布拼车信息</a></li>
+					<%
+						if(session.getAttribute("user")==null){
+					%>
 					<li><a href="register.jsp">注册</a></li>
+					<li><a href="login.jsp">登录</a></li>
+					<%} else{ %>
+					<li><a href="myInfomation.jsp">我的信息</a></li>
+					<% } %>
 					<li><a class="active" href="contact.jsp">联系我们</a></li>
 				</ul>
 			</div>

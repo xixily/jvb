@@ -7,7 +7,7 @@
 	<!-- 如果考虑到web项目的多客户端并发请求，则可以为此bean增加cope属性，取值prototype(默认：singleton)，代表多实例. -->
 	<bean id="user" class="jvb.pinche.action.UserAction" scope="prototype">
 		<property name="user" ref="userVo"></property>
-		<property name="userDao" ref="userDao"></property>
+		<property name="userDao" ref="serviceDao"></property>
 		<property name="validateCode" value="test"/>
 	</bean>
 	<bean id="messages" class="jvb.pinche.action.MessagesAction" scope="prototype">
@@ -24,10 +24,14 @@
 	</bean>
 	<bean id="export" class="jvb.pinche.action.ExportAction">
 	
+	
+	
 	</bean>
-	<bean id="userDao" class="jvb.pinche.dao.ApplicationDao" scope="prototype"></bean>
-	<bean id="messagesDao" class="jvb.pinche.dao.MessagesDao" scope="prototype"></bean>
-	<bean id="applictionDao" class="jvb.pinche.dao.ApplicationDao" scope="prototype"></bean>
+	<bean id="userDao" class="jvb.pinche.dao.Imp.ApplicationDaoImp" scope="prototype"></bean>
+	<bean id="messagesDao" class="jvb.pinche.dao.Imp.MessagesDaoImp" scope="prototype"></bean>
+	<bean id="applictionDao" class="jvb.pinche.dao.Imp.ApplicationDaoImp" scope="prototype"></bean>
+	<bean id="serviceDao" class="jvb.pinche.dao.Imp.ServiceDaoImp" scope="prototype"></bean>
+	
 	<bean id="userVo" class="jvb.pinche.vo.User" scope="prototype">
 		<property name="userType" value="乘客"/>
 	</bean>

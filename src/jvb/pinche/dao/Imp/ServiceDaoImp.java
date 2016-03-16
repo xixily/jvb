@@ -30,15 +30,15 @@ public class ServiceDaoImp extends BaseDaoM implements ServiceDao ,ServiceDaoPro
 	}
 	
 	@Override
-	public User getUserByUserName(String username) {
+	public List<User> getUserByUserName(String username) {
 		List<User> users = null;
-		String sql = "SELECT * FROM jvb_pinche.tbl_user WHERE userName=?";
+		String sql = "SELECT * FROM jwb.tbl_user WHERE userName=?";
 		try {
 			users = executeQuery(sql, User.class, username);
 			}catch(Exception e){
 			logger.error("通过userName:"+username+"查询用户失败！", e);
 			}
-		return null;
+		return users;
 	}
 
 	@Override

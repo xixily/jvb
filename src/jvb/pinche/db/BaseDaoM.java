@@ -263,7 +263,7 @@ public class BaseDaoM {
 		u.setUserName("yzq");
 		u.setUserPassword("123abc");
 		u.setNickName("zhongqing");
-		u.setEMail("bilybily@qq.com");
+		u.setEmail("bilybily@qq.com");
 		u.setRealName("yzq");
 		u.setUserType("³Ë¿Í");
 		u.setTelPhone("123124251");
